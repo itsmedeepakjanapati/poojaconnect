@@ -1,7 +1,12 @@
 // Firebase Messaging Service Worker
 // Handles background push notifications when app is not in foreground
-importScripts('https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js');
-importScripts('https://www.gstatic.com/firebasejs/10.8.0/firebase-messaging-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/10.14.1/firebase-messaging-compat.js');
+
+// Ensure the latest service worker activates immediately, replacing any old SW
+// that may have been intercepting and corrupting Firebase Auth network requests.
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
 
 firebase.initializeApp({
   apiKey: "AIzaSyCmSKb2yGMTXC5YT7NwzH41MLV2lpAAlGU",

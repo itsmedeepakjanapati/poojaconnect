@@ -86,10 +86,11 @@ function AppContent() {
   // Listen for foreground push messages
   useEffect(() => {
     if (messaging && user) {
-      const unsub = onForegroundMessage(messaging, (payload) => {
+      let unsubscribe;
+      onForegroundMessage(messaging, (payload) => {
         addToast(payload.title, payload.body, 'info');
-      });
-      return unsub;
+      }).then(fn => { unsubscribe = fn; });
+      return () => unsubscribe?.();
     }
   }, [user]);
 

@@ -38,8 +38,8 @@ export async function requestWebPushPermission(messaging, vapidKey) {
 /**
  * Listen for foreground messages (WEB)
  */
-export function onForegroundMessage(messaging, callback) {
-  const { onMessage } = require('firebase/messaging');
+export async function onForegroundMessage(messaging, callback) {
+  const { onMessage } = await import('firebase/messaging');
   return onMessage(messaging, (payload) => {
     console.log('Foreground message:', payload);
     callback({
