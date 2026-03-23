@@ -1,0 +1,20 @@
+{
+  "name": "poojaconnect",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PoojaConnect — Hindu Religious Services Marketplace (Web + Mobile)",
+  "scripts": {
+    "web:dev": "cd web && npm run dev",
+    "web:build": "cd web && npm run build",
+    "mobile:start": "cd mobile && npx expo start",
+    "mobile:android": "cd mobile && npx expo start --android",
+    "mobile:ios": "cd mobile && npx expo start --ios",
+    "functions:deploy": "cd functions && npm run deploy",
+    "deploy:web": "cd web && npm run build && cd .. && firebase deploy --only hosting",
+    "deploy:functions": "firebase deploy --only functions",
+    "deploy:rules": "firebase deploy --only firestore:rules,storage",
+    "deploy:all": "npm run web:build && firebase deploy",
+    "seed": "curl -X POST https://us-central1-poojaconnect-app.cloudfunctions.net/seedDatabase",
+    "setup": "cd web && npm install && cd ../mobile && npm install && cd ../functions && npm install"
+  }
+}

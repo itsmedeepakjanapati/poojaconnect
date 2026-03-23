@@ -1,0 +1,13 @@
+{
+  "name": "PoojaConnect",
+  "short_name": "PoojaConnect",
+  "description": "Hindu Religious Services Marketplace — Boston, NH, CT",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FEFCF6",
+  "theme_color": "#E8712A",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

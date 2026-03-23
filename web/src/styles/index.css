@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+body { font-family: 'DM Sans', system-ui, sans-serif; background: #FEFCF6; margin: 0; }
+::selection { background: #FFF3EB; color: #C5561A; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: #E8DCC8; border-radius: 3px; }
+
+@keyframes slideIn {
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.animate-slideIn { animation: slideIn 0.3s ease; }

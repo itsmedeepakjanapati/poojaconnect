@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Users — only the user themselves or admin can read/write
+    match /users/{userId} {
+      allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update: if request.auth != null && (request.auth.uid == userId || isAdmin());
+    }
+
+    // Priests — anyone authed can read approved, only admin can approve/reject
+    match /priests/{priestId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null; // self-registration
+      allow update: if request.auth != null && isAdmin();
+    }
+
+    // Vendors — same as priests
+    match /vendors/{vendorId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update: if request.auth != null && isAdmin();
+    }
+
+    // Bookings — user can create/read their own, priest can read theirs, admin can read all
+    match /bookings/{bookingId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null && (
+        resource.data.userId == request.auth.uid ||
+        resource.data.priestId == request.auth.uid ||
+        isAdmin()
+      );
+      allow update: if request.auth != null && (
+        resource.data.userId == request.auth.uid ||
+        resource.data.priestId == request.auth.uid ||
+        isAdmin()
+      );
+    }
+
+    // Helper: check if user is admin
+    function isAdmin() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+  }
+}
