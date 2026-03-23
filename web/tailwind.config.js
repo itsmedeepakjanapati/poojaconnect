@@ -11,7 +11,7 @@ export default {
       },
       fontFamily: {
         serif: ['"Noto Serif"', 'Georgia', 'serif'],
-        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
       },
     },
   },

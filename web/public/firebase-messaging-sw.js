@@ -4,12 +4,12 @@ importScripts('https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js'
 importScripts('https://www.gstatic.com/firebasejs/10.8.0/firebase-messaging-compat.js');
 
 firebase.initializeApp({
-  apiKey: "YOUR_API_KEY",
-  authDomain: "poojaconnect-app.firebaseapp.com",
-  projectId: "poojaconnect-app",
-  storageBucket: "poojaconnect-app.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyCmSKb2yGMTXC5YT7NwzH41MLV2lpAAlGU",
+  authDomain: "pooja-connect-fd709.firebaseapp.com",
+  projectId: "pooja-connect-fd709",
+  storageBucket: "pooja-connect-fd709.firebasestorage.app",
+  messagingSenderId: "863489802443",
+  appId: "1:863489802443:web:5ad9d73cdcf943ef701b4e",
 });
 
 const messaging = firebase.messaging();

@@ -14,7 +14,10 @@
     "deploy:functions": "firebase deploy --only functions",
     "deploy:rules": "firebase deploy --only firestore:rules,storage",
     "deploy:all": "npm run web:build && firebase deploy",
-    "seed": "curl -X POST https://us-central1-poojaconnect-app.cloudfunctions.net/seedDatabase",
+    "seed": "curl -X POST https://us-central1-pooja-connect-fd709.cloudfunctions.net/seedDatabase",
     "setup": "cd web && npm install && cd ../mobile && npm install && cd ../functions && npm install"
+  },
+  "dependencies": {
+    "firebase": "^12.11.0"
   }
 }
