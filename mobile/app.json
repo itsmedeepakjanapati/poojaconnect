@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "PoojaConnect",
-    "slug": "poojaconnect",
+    "name": "Samskara",
+    "slug": "thesamskara",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,23 +9,28 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#FEFCF6"
+      "backgroundColor": "#1a0a00"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.poojaconnect.app",
+      "bundleIdentifier": "com.thesamskara.app",
+      "buildNumber": "1",
       "infoPlist": {
-        "UIBackgroundModes": ["remote-notification"]
+        "UIBackgroundModes": ["remote-notification"],
+        "NSLocationWhenInUseUsageDescription": "Used to show accurate sunrise/sunset and Panchang times for your location.",
+        "NSCameraUsageDescription": "Used to upload a profile photo."
       }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#E8712A"
+        "backgroundColor": "#3d1500"
       },
-      "package": "com.poojaconnect.app",
-      "googleServicesFile": "./google-services.json"
+      "package": "com.thesamskara.app",
+      "versionCode": 1,
+      "googleServicesFile": "./google-services.json",
+      "permissions": ["RECEIVE_BOOT_COMPLETED", "VIBRATE"]
     },
     "plugins": [
       [
