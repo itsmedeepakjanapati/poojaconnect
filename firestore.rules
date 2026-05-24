@@ -16,6 +16,12 @@ service cloud.firestore {
           (!('role' in request.resource.data) ||
             request.resource.data.role == resource.data.role))
       );
+
+      // Auth logs subcollection — user can write their own logs, admin can read all
+      match /authLogs/{logId} {
+        allow create: if request.auth != null && request.auth.uid == userId;
+        allow read:   if request.auth != null && (request.auth.uid == userId || isAdmin());
+      }
     }
 
     // Priests — anyone authed can read approved, self-register allowed, admin can write anything

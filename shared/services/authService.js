@@ -114,3 +114,50 @@ export async function updateFcmToken(db, uid, token) {
   const { doc, updateDoc } = await import('firebase/firestore');
   await updateDoc(doc(db, 'users', uid), { fcmToken: token });
 }
+
+/**
+ * Mark biometric login as enabled on the user's Firestore document
+ * and write an enrollment auth log entry.
+ * @param {object} db - Firestore instance
+ * @param {string} uid - Firebase user UID
+ * @param {object} meta - { biometricType, deviceModel, platform }
+ */
+export async function enableBiometricForUser(db, uid, meta = {}) {
+  const { doc, updateDoc, collection, addDoc, serverTimestamp } = await import('firebase/firestore');
+
+  // Update top-level user doc flag
+  await updateDoc(doc(db, 'users', uid), {
+    biometricEnabled:    true,
+    biometricEnrolledAt: serverTimestamp(),
+    biometricType:       meta.biometricType || 'biometric',
+  });
+
+  // Write enrollment log
+  await addDoc(collection(db, 'users', uid, 'authLogs'), {
+    type:      'biometric_enrolled',
+    timestamp: serverTimestamp(),
+    success:   true,
+    ...meta,
+  });
+}
+
+/**
+ * Log an authentication event to users/{uid}/authLogs
+ * @param {object} db - Firestore instance
+ * @param {string} uid
+ * @param {'email_login'|'biometric_login'|'logout'} type
+ * @param {object} meta - extra metadata (platform, device, success, error)
+ */
+export async function logAuthEvent(db, uid, type, meta = {}) {
+  const { collection, addDoc, serverTimestamp } = await import('firebase/firestore');
+  try {
+    await addDoc(collection(db, 'users', uid, 'authLogs'), {
+      type,
+      timestamp: serverTimestamp(),
+      ...meta,
+    });
+  } catch (err) {
+    // Auth logging is non-critical — never throw
+    console.warn('[logAuthEvent] failed silently:', err.message);
+  }
+}
