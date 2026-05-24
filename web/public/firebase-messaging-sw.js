@@ -22,7 +22,7 @@ const messaging = firebase.messaging();
 messaging.onBackgroundMessage((payload) => {
   console.log('Background message:', payload);
   const { title, body } = payload.notification || {};
-  self.registration.showNotification(title || 'PoojaConnect', {
+  self.registration.showNotification(title || 'Samskara', {
     body: body || 'You have a new notification',
     icon: '/icon-192.png',
     badge: '/icon-192.png',

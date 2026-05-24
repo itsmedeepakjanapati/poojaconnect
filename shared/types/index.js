@@ -28,11 +28,40 @@ export const STATES = [
   { value: 'Massachusetts', label: 'Massachusetts' },
   { value: 'Connecticut', label: 'Connecticut' },
   { value: 'New Hampshire', label: 'New Hampshire' },
+  { value: 'Rhode Island', label: 'Rhode Island' },
+  { value: 'Vermont', label: 'Vermont' },
+  { value: 'Maine', label: 'Maine' },
 ];
 
 export const LANGUAGES = [
   'Telugu', 'Tamil', 'Kannada', 'Hindi', 'Sanskrit',
   'English', 'Gujarati', 'Malayalam', 'Marathi', 'Bengali',
+];
+
+// ─── Bhokta-specific options ──────────────────────────────────────────
+// A Bhokta is an invited brahmin who partakes in the ritual meal during
+// Pitru Karyam (ancestral rites), representing the pitrus (forefathers).
+// They are a distinct role from the officiating priest.
+
+export const PITRU_RITUALS = [
+  'Pitru Karyam',
+  'Pitru Tarpana',
+  'Shraddha',
+  'Masika Shraddha',
+  'Tila Tarpana',
+  'Mahalaya Paksha Shraddha',
+  'Pinda Pradhana',
+  'Sapindikarana',
+  'Varshika Shraddha (Annual)',
+  'Shanti Pooja',
+];
+
+export const TRAVEL_DISTANCE_OPTIONS = [
+  { value: 10,   label: 'Within 10 miles' },
+  { value: 25,   label: 'Within 25 miles' },
+  { value: 50,   label: 'Within 50 miles' },
+  { value: 100,  label: 'Within 100 miles' },
+  { value: 9999, label: 'Anywhere in New England' },
 ];
 
 export const POOJA_CATEGORIES = [

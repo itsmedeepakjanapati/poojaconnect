@@ -6,7 +6,7 @@ import { PRIESTS_SEED } from '../../../shared/data/seedData';
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { from: 'bot', text: 'Namaste! 🙏 I\'m your PoojaConnect assistant. Ask me about poojas, homams, priests, vendors, or Hindu rituals.' }
+    { from: 'bot', text: 'Namaste! 🙏 I\'m your Samskara assistant. Ask me about poojas, homams, priests, vendors, or Hindu rituals.' }
   ]);
   const [input, setInput] = useState('');
   const chatRef = useRef(null);
@@ -36,7 +36,7 @@ export default function Chatbot() {
       {open && (
         <div className="fixed bottom-24 right-5 w-96 max-w-[calc(100vw-40px)] h-[480px] bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden">
           <div className="text-white px-5 py-3" style={{ background: 'linear-gradient(135deg, #E8712A, #C5561A)' }}>
-            <div className="font-bold text-sm">🙏 PoojaConnect Assistant</div>
+            <div className="font-bold text-sm">🙏 Samskara Assistant</div>
             <div className="text-xs opacity-80">Ask about poojas, priests, or rituals</div>
           </div>
           <div ref={chatRef} className="flex-1 overflow-y-auto p-4 flex flex-col gap-3">

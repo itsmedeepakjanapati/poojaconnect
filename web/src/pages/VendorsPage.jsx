@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { VENDORS_SEED } from '../../../shared/data/seedData';
 
 function openWhatsApp(number, name) {
-  const msg = encodeURIComponent(`Hi, I found you on PoojaConnect. I'd like to enquire about your pooja supplies.`);
+  const msg = encodeURIComponent(`Hi, I found you on Samskara. I'd like to enquire about your pooja supplies.`);
   window.open(`https://wa.me/${number.replace(/\D/g, '')}?text=${msg}`, '_blank');
 }
 
@@ -27,7 +27,10 @@ export default function VendorsPage() {
   );
 
   return (
-    <main style={{ maxWidth: 1100, margin: '0 auto', padding: '28px 16px' }}>
+    <main style={{
+      width: '100%', maxWidth: 1600, margin: '0 auto',
+      padding: 'clamp(16px, 2.5vw, 36px) clamp(16px, 3vw, 40px)',
+    }}>
 
       {/* Hero */}
       <div style={{

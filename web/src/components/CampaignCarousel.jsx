@@ -61,7 +61,7 @@ const FALLBACK_SLIDES = [
     badge: '🎉 Limited Offer',
     title: 'Spring Grihapravesham Package',
     subtitle: 'Special bundle pricing for April moves',
-    description: 'New home? Our top-rated priests offer complete Grihapravesham packages including all materials when booked via PoojaConnect.',
+    description: 'New home? Our top-rated priests offer complete Grihapravesham packages including all materials when booked via Samskara.',
     emoji: '🏡',
     ctaLabel: 'See Packages',
     ctaLink: '/priests?category=Grihapravesham',
@@ -71,7 +71,7 @@ const FALLBACK_SLIDES = [
   {
     id: 'f4', type: 'announcement', active: true,
     badge: '✨ New',
-    title: 'Vivek Flowers — Now on PoojaConnect',
+    title: 'Vivek Flowers — Now on Samskara',
     subtitle: 'Fresh jasmine, rose & marigold garlands delivered',
     description: 'Lowell MA\'s premier flower shop is now available to pair with any priest booking. Same-day delivery available.',
     emoji: '🌸',

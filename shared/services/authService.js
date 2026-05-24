@@ -54,12 +54,32 @@ export async function loginUser(auth, email, password) {
 
 /**
  * Sign in with Google (web only — mobile uses Expo Google auth)
+ * Falls back to redirect flow when popups are blocked.
  */
 export async function loginWithGoogle(auth) {
-  const { GoogleAuthProvider, signInWithPopup } = await import('firebase/auth');
+  const {
+    GoogleAuthProvider,
+    signInWithPopup,
+    signInWithRedirect,
+  } = await import('firebase/auth');
   const provider = new GoogleAuthProvider();
-  const credential = await signInWithPopup(auth, provider);
-  return credential.user;
+  provider.setCustomParameters({ prompt: 'select_account' });
+  try {
+    const credential = await signInWithPopup(auth, provider);
+    return credential.user;
+  } catch (err) {
+    console.error('[Google Sign-In] code:', err.code, 'message:', err.message);
+    // Fallback to redirect when popup is blocked / closed / not supported
+    if (
+      err.code === 'auth/popup-blocked' ||
+      err.code === 'auth/popup-closed-by-user' ||
+      err.code === 'auth/operation-not-supported-in-this-environment'
+    ) {
+      await signInWithRedirect(auth, provider);
+      return null; // redirect navigates away; resolved via getRedirectResult on return
+    }
+    throw err;
+  }
 }
 
 /**

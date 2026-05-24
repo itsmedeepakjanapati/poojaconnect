@@ -9,7 +9,7 @@ import { createBooking } from '../../../shared/services/bookingService';
 import BookingModal from '../components/BookingModal';
 
 function openWhatsApp(number, priestName) {
-  const msg = encodeURIComponent(`Namaste ${priestName} ji 🙏, I found you on PoojaConnect and would like to enquire about your pooja services.`);
+  const msg = encodeURIComponent(`Namaste ${priestName} ji 🙏, I found you on Samskara and would like to enquire about your pooja services.`);
   window.open(`https://wa.me/${number.replace(/\D/g, '')}?text=${msg}`, '_blank');
 }
 
@@ -233,7 +233,10 @@ export default function PriestsPage() {
   };
 
   return (
-    <main style={{ maxWidth: 1100, margin: '0 auto', padding: '28px 16px' }}>
+    <main style={{
+      width: '100%', maxWidth: 1600, margin: '0 auto',
+      padding: 'clamp(16px, 2.5vw, 36px) clamp(16px, 3vw, 40px)',
+    }}>
 
       {/* ── Hero Banner ─────────────────────────────────────────── */}
       <div style={{

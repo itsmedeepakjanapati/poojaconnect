@@ -1,0 +1,21 @@
+{
+  "projects": {},
+  "targets": {
+    "pooja-connect-fd709": {
+      "hosting": {
+        "production": [
+          "pooja-connect-fd709"
+        ],
+        "dev": [
+          "samskara-dev-2bf61",
+          "thesamskara-dev"
+        ],
+        "test": [
+          "samskara-test",
+          "thesamskara-test"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

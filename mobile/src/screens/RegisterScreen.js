@@ -26,7 +26,7 @@ export default function RegisterScreen({ navigation }) {
     <KeyboardAvoidingView style={{flex:1,backgroundColor:colors.cream}} behavior={Platform.OS==='ios'?'padding':undefined}>
       <ScrollView contentContainerStyle={{flexGrow:1,justifyContent:'center',padding:24}} keyboardShouldPersistTaps="handled">
         <Text style={{fontSize:40,textAlign:'center',marginBottom:6}}>🙏</Text>
-        <Text style={{fontSize:24,fontWeight:'700',textAlign:'center',color:colors.saffron,marginBottom:20}}>Join PoojaConnect</Text>
+        <Text style={{fontSize:24,fontWeight:'700',textAlign:'center',color:colors.saffron,marginBottom:20}}>Join Samskara</Text>
         <View style={{backgroundColor:colors.white,borderRadius:16,padding:24,elevation:3}}>
           {[['Full Name','name','default'],['Phone','phone','phone-pad'],['Email','email','email-address'],['Password','password','default']].map(([lbl,key,kb])=>(
             <View key={key}>

@@ -99,7 +99,7 @@ exports.onBookingUpdated = functions.firestore
         // SMS via Twilio
         if (notifPrefs.sms && user.phone) {
           await sendSMS(user.phone,
-            `PoojaConnect: Your ${after.poojaType} with ${after.priestName} is confirmed for ${after.confirmedDate || after.requestedDate}. Price: ${after.confirmedPrice}`
+            `Samskara: Your ${after.poojaType} with ${after.priestName} is confirmed for ${after.confirmedDate || after.requestedDate}. Price: ${after.confirmedPrice}`
           );
         }
 
@@ -135,7 +135,7 @@ exports.onBookingUpdated = functions.firestore
 
         if (notifPrefs.sms && user.phone) {
           await sendSMS(user.phone,
-            `PoojaConnect: Your ${after.poojaType} booking with ${after.priestName} has been cancelled.`
+            `Samskara: Your ${after.poojaType} booking with ${after.priestName} has been cancelled.`
           );
         }
 
@@ -162,8 +162,8 @@ exports.onPriestApproved = functions.firestore
     const after = change.after.data();
     if (before.status === 'pending' && after.status === 'approved' && after.email) {
       await sendEmail(after.email, {
-        subject: '✅ Your PoojaConnect profile has been approved!',
-        html: `<p>Namaste ${after.name},</p><p>Your priest profile is now live on PoojaConnect. Devotees can now find and book your services.</p><p>🙏 PoojaConnect Team</p>`,
+        subject: '✅ Your Samskara profile has been approved!',
+        html: `<p>Namaste ${after.name},</p><p>Your priest profile is now live on Samskara. Devotees can now find and book your services.</p><p>🙏 Samskara Team</p>`,
       });
     }
   });
@@ -175,8 +175,8 @@ exports.onVendorApproved = functions.firestore
     const after = change.after.data();
     if (before.status === 'pending' && after.status === 'approved' && after.email) {
       await sendEmail(after.email, {
-        subject: '✅ Your vendor listing on PoojaConnect is live!',
-        html: `<p>Dear ${after.name},</p><p>Your vendor profile is now live on PoojaConnect. Users will see your shop when booking poojas that need your items.</p><p>🙏 PoojaConnect Team</p>`,
+        subject: '✅ Your vendor listing on Samskara is live!',
+        html: `<p>Dear ${after.name},</p><p>Your vendor profile is now live on Samskara. Users will see your shop when booking poojas that need your items.</p><p>🙏 Samskara Team</p>`,
       });
     }
   });
@@ -253,7 +253,7 @@ function buildConfirmationEmail(booking, user) {
   return `
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
       <div style="background:#E8712A;color:white;padding:20px;text-align:center;border-radius:12px 12px 0 0;">
-        <h1 style="margin:0;">🙏 PoojaConnect</h1>
+        <h1 style="margin:0;">🙏 Samskara</h1>
       </div>
       <div style="padding:24px;background:#FEFCF6;border:1px solid #E8DCC8;border-radius:0 0 12px 12px;">
         <h2 style="color:#1A1207;">Booking Confirmed!</h2>
@@ -266,7 +266,7 @@ function buildConfirmationEmail(booking, user) {
           <tr><td style="padding:8px;font-weight:bold;">Address:</td><td style="padding:8px;">${booking.address}</td></tr>
         </table>
         ${items}
-        <p style="color:#8B7355;font-size:12px;margin-top:20px;">You received this email from PoojaConnect.</p>
+        <p style="color:#8B7355;font-size:12px;margin-top:20px;">You received this email from Samskara.</p>
       </div>
     </div>`;
 }
@@ -275,14 +275,14 @@ function buildCancellationEmail(booking, user) {
   return `
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
       <div style="background:#C62828;color:white;padding:20px;text-align:center;border-radius:12px 12px 0 0;">
-        <h1 style="margin:0;">🙏 PoojaConnect</h1>
+        <h1 style="margin:0;">🙏 Samskara</h1>
       </div>
       <div style="padding:24px;background:#FEFCF6;border:1px solid #E8DCC8;border-radius:0 0 12px 12px;">
         <h2 style="color:#1A1207;">Booking Cancelled</h2>
         <p>Dear ${user.name || 'Devotee'},</p>
         <p>Your <strong>${booking.poojaType}</strong> booking with <strong>${booking.priestName}</strong> has been cancelled.</p>
         <p>If you did not request this cancellation, please contact us.</p>
-        <p style="color:#8B7355;font-size:12px;margin-top:20px;">You received this email from PoojaConnect.</p>
+        <p style="color:#8B7355;font-size:12px;margin-top:20px;">You received this email from Samskara.</p>
       </div>
     </div>`;
 }

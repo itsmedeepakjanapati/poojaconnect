@@ -66,7 +66,7 @@ async function registerForPushNotifications() {
 
   if (Platform.OS === 'android') {
     await Notifications.setNotificationChannelAsync('default', {
-      name: 'PoojaConnect',
+      name: 'Samskara',
       importance: Notifications.AndroidImportance.MAX,
       vibrationPattern: [0, 250, 250, 250],
       lightColor: '#E8712A',

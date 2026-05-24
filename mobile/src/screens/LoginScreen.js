@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert, KeyboardAvoidingView, Platform, Image } from 'react-native';
 import { auth } from '../firebase';
 import { loginUser } from '../../../shared/services/authService';
 import { colors } from '../styles/theme';
@@ -20,9 +20,13 @@ export default function LoginScreen({ navigation }) {
   return (
     <KeyboardAvoidingView style={s.container} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <ScrollView contentContainerStyle={s.scroll} keyboardShouldPersistTaps="handled">
-        <Text style={s.emoji}>🙏</Text>
-        <Text style={s.title}>PoojaConnect</Text>
-        <Text style={s.subtitle}>Hindu Religious Services · Boston · NH · CT</Text>
+        <Image
+          source={require('../../assets/logo-wordmark.png')}
+          style={s.logo}
+          resizeMode="contain"
+          accessibilityLabel="Samskara — Tradition, made simple"
+        />
+        <Text style={s.subtitle}>Hindu Religious Services · Serving All of New England</Text>
         <View style={s.card}>
           <Text style={s.heading}>Sign In</Text>
           <Text style={s.label}>Email</Text>
@@ -43,6 +47,7 @@ export default function LoginScreen({ navigation }) {
 
 const s = StyleSheet.create({
   container:{flex:1,backgroundColor:colors.cream},scroll:{flexGrow:1,justifyContent:'center',padding:24},
+  logo:{width:'80%',height:80,alignSelf:'center',marginBottom:8},
   emoji:{fontSize:48,textAlign:'center',marginBottom:8},title:{fontSize:30,fontWeight:'700',textAlign:'center',color:colors.saffron},
   subtitle:{fontSize:13,textAlign:'center',color:colors.light,marginBottom:28},
   card:{backgroundColor:colors.white,borderRadius:16,padding:24,shadowColor:'#000',shadowOpacity:0.05,shadowRadius:12,elevation:3},

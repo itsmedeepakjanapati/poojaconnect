@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════
 // shared/data/seedData.js
-// Priest & Vendor seed data — Boston, NH, CT
+// Priest & Vendor seed data — New England (MA, CT, NH, RI, VT, ME)
 // Used by both web and mobile apps, and for Firestore seeding
 // ═══════════════════════════════════════════════════════════════
 

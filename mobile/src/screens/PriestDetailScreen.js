@@ -7,7 +7,7 @@ import { getItemsForPooja } from '../../../shared/types';
 
 function openWhatsApp(number, priestName) {
   const clean = number.replace(/\D/g, '');
-  const msg = encodeURIComponent(`Namaste ${priestName} ji 🙏, I found you on PoojaConnect and would like to enquire about your pooja services.`);
+  const msg = encodeURIComponent(`Namaste ${priestName} ji 🙏, I found you on Samskara and would like to enquire about your pooja services.`);
   const url = `whatsapp://send?phone=${clean}&text=${msg}`;
   Linking.canOpenURL(url).then(supported => {
     if (supported) {

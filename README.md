@@ -1,6 +1,6 @@
 # 🙏 PoojaConnect
 
-**Hindu Religious Services Marketplace — Boston, New Hampshire & Connecticut**
+**Hindu Religious Services Marketplace — Serving All of New England**
 
 A Thumbtack-style platform specifically for Hindu devotees to find priests for poojas, homams, pitru karyams, and samskaras. Built with a unified codebase for **Web (React PWA)** and **Mobile (React Native / Expo)** sharing the same Firebase backend.
 

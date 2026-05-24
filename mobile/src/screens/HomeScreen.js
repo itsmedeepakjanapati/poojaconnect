@@ -10,7 +10,7 @@ export default function HomeScreen({ navigation }) {
       {/* Hero */}
       <View style={s.hero}>
         <Text style={s.heroTitle}>Namaste! 🙏</Text>
-        <Text style={s.heroSub}>Find trusted Hindu priests for poojas, homams, pitru karyams & more across Boston, NH & CT.</Text>
+        <Text style={s.heroSub}>Find trusted Hindu priests for poojas, homams, pitru karyams & more across all of New England — MA, CT, NH, RI, VT & ME.</Text>
         <View style={s.heroButtons}>
           <TouchableOpacity style={s.heroBtnPrimary} onPress={() => navigation.navigate('Priests')}>
             <Text style={s.heroBtnPrimaryText}>Find a Priest</Text>

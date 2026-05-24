@@ -43,7 +43,7 @@ export async function onForegroundMessage(messaging, callback) {
   return onMessage(messaging, (payload) => {
     console.log('Foreground message:', payload);
     callback({
-      title: payload.notification?.title || 'PoojaConnect',
+      title: payload.notification?.title || 'Samskara',
       body: payload.notification?.body || '',
       data: payload.data || {},
     });
@@ -82,7 +82,7 @@ export function buildNotificationContent(type, data) {
     case 'approval_approved':
       return {
         title: '✅ Profile Approved!',
-        body: 'Your profile has been approved and is now live on PoojaConnect.',
+        body: 'Your profile has been approved and is now live on Samskara.',
         data: { type: 'approval_approved' },
       };
     case 'approval_rejected':
@@ -93,7 +93,7 @@ export function buildNotificationContent(type, data) {
       };
     default:
       return {
-        title: '🙏 PoojaConnect',
+        title: '🙏 Samskara',
         body: data.message || 'You have a new notification.',
         data: { type: 'generic' },
       };
@@ -109,7 +109,7 @@ export const EMAIL_TEMPLATES = {
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <div style="background: #E8712A; color: white; padding: 20px; text-align: center;">
-          <h1 style="margin: 0;">🙏 PoojaConnect</h1>
+          <h1 style="margin: 0;">🙏 Samskara</h1>
         </div>
         <div style="padding: 24px; background: #FEFCF6;">
           <h2 style="color: #1A1207;">Booking Confirmed!</h2>
@@ -125,7 +125,7 @@ export const EMAIL_TEMPLATES = {
             <h3 style="color: #D4A843;">🛒 Suggested Items</h3>
             <p>${data.suggestedItems.join(', ')}</p>
           ` : ''}
-          <p style="color: #8B7355; font-size: 12px;">You received this email because you booked a service on PoojaConnect.</p>
+          <p style="color: #8B7355; font-size: 12px;">You received this email because you booked a service on Samskara.</p>
         </div>
       </div>
     `,
@@ -136,14 +136,14 @@ export const EMAIL_TEMPLATES = {
     html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <div style="background: #C62828; color: white; padding: 20px; text-align: center;">
-          <h1 style="margin: 0;">🙏 PoojaConnect</h1>
+          <h1 style="margin: 0;">🙏 Samskara</h1>
         </div>
         <div style="padding: 24px; background: #FEFCF6;">
           <h2 style="color: #1A1207;">Booking Cancelled</h2>
           <p>Dear ${data.userName},</p>
           <p>Your <strong>${data.poojaType}</strong> booking with <strong>${data.priestName}</strong> has been cancelled.</p>
           <p>If you did not request this cancellation, please contact us immediately.</p>
-          <p style="color: #8B7355; font-size: 12px;">You received this email because you had a booking on PoojaConnect.</p>
+          <p style="color: #8B7355; font-size: 12px;">You received this email because you had a booking on Samskara.</p>
         </div>
       </div>
     `,
@@ -155,7 +155,7 @@ export const EMAIL_TEMPLATES = {
  */
 export const SMS_TEMPLATES = {
   bookingConfirmed: (data) =>
-    `PoojaConnect: Your ${data.poojaType} with ${data.priestName} is confirmed for ${data.confirmedDate}. Price: ${data.confirmedPrice}`,
+    `Samskara: Your ${data.poojaType} with ${data.priestName} is confirmed for ${data.confirmedDate}. Price: ${data.confirmedPrice}`,
   bookingCancelled: (data) =>
-    `PoojaConnect: Your ${data.poojaType} booking with ${data.priestName} has been cancelled.`,
+    `Samskara: Your ${data.poojaType} booking with ${data.priestName} has been cancelled.`,
 };

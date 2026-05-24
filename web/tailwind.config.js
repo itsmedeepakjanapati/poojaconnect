@@ -10,8 +10,8 @@ export default {
         gold: '#D4A843',
       },
       fontFamily: {
-        serif: ['"Noto Serif"', 'Georgia', 'serif'],
-        sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        serif: ['Roboto', 'system-ui', 'sans-serif'],
+        sans: ['Roboto', 'system-ui', 'sans-serif'],
       },
     },
   },

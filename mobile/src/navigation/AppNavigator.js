@@ -30,7 +30,7 @@ function HomeStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="HomeMain" component={HomeScreen} />
-      <Stack.Screen name="Chatbot" component={ChatbotScreen} options={{ headerShown: true, title: '🙏 PoojaConnect Assistant' }} />
+      <Stack.Screen name="Chatbot" component={ChatbotScreen} options={{ headerShown: true, title: '🙏 Samskara Assistant' }} />
     </Stack.Navigator>
   );
 }

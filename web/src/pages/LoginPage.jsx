@@ -18,7 +18,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await loginUser(auth, email, password);
-      addToast?.('Namaste! 🙏', 'Welcome back to PoojaConnect', 'success');
+      addToast?.('Namaste! 🙏', 'Welcome back to Samskara', 'success');
     } catch (err) {
       setError(err.message.replace('Firebase: ', ''));
     } finally {
@@ -27,11 +27,14 @@ export default function LoginPage() {
   };
 
   const handleGoogleLogin = async () => {
+    setError('');
     try {
-      await loginWithGoogle(auth);
-      addToast?.('Namaste! 🙏', 'Welcome to PoojaConnect', 'success');
+      const user = await loginWithGoogle(auth);
+      if (user) addToast?.('Namaste! 🙏', 'Welcome to Samskara', 'success');
     } catch (err) {
-      setError(err.message.replace('Firebase: ', ''));
+      console.error('Google login failed:', err);
+      const code = err.code ? ` (${err.code})` : '';
+      setError((err.message || 'Google sign-in failed').replace('Firebase: ', '') + code);
     }
   };
 
@@ -40,8 +43,8 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="text-5xl mb-3">🙏</div>
-          <h1 className="text-3xl font-serif font-bold" style={{ color: '#E8712A' }}>PoojaConnect</h1>
-          <p className="text-gray-500 text-sm mt-1">Hindu Religious Services · Boston · NH · CT</p>
+          <h1 className="text-3xl font-serif font-bold" style={{ color: '#E8712A' }}>Samskara</h1>
+          <p className="text-gray-500 text-sm mt-1">Hindu Religious Services · Serving All of New England</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-lg p-7 border border-gray-100">

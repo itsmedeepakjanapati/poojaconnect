@@ -6,7 +6,7 @@ import { PRIESTS_SEED } from '../../../shared/data/seedData';
 
 export default function ChatbotScreen() {
   const [messages, setMessages] = useState([
-    { id: '0', from: 'bot', text: 'Namaste! 🙏 I\'m your PoojaConnect assistant. Ask me about poojas, homams, priests, vendors, or Hindu rituals.' }
+    { id: '0', from: 'bot', text: 'Namaste! 🙏 I\'m your Samskara assistant. Ask me about poojas, homams, priests, vendors, or Hindu rituals.' }
   ]);
   const [input, setInput] = useState('');
   const flatRef = useRef();

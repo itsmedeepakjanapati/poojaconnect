@@ -2,17 +2,26 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Users — only the user themselves or admin can read/write
+    // Users — only the user themselves or admin can read/write.
+    // Users may update their own profile but CANNOT change their own role.
+    // Only an admin can change another user's role (or grant admin).
     match /users/{userId} {
       allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
-      allow create: if request.auth != null && request.auth.uid == userId;
-      allow update: if request.auth != null && (request.auth.uid == userId || isAdmin());
+      allow create: if request.auth != null && request.auth.uid == userId
+                    && (!('role' in request.resource.data) || request.resource.data.role == 'user');
+      allow update: if request.auth != null && (
+        isAdmin() ||
+        (request.auth.uid == userId &&
+          // Self-update: role must stay the same as what's already stored (or absent on both sides).
+          (!('role' in request.resource.data) ||
+            request.resource.data.role == resource.data.role))
+      );
     }
 
-    // Priests — anyone authed can read approved, only admin can approve/reject
+    // Priests — anyone authed can read approved, self-register allowed, admin can write anything
     match /priests/{priestId} {
       allow read: if request.auth != null;
-      allow create: if request.auth != null; // self-registration
+      allow create: if request.auth != null; // self-registration or admin seed
       allow update: if request.auth != null && isAdmin();
     }
 
@@ -21,6 +30,22 @@ service cloud.firestore {
       allow read: if request.auth != null;
       allow create: if request.auth != null;
       allow update: if request.auth != null && isAdmin();
+    }
+
+    // Bhoktas — invited brahmins for Pitru Karyam ritual meals.
+    // Same access pattern as priests/vendors: any authed user can browse,
+    // self-register allowed, only admin can approve/edit existing records.
+    match /bhoktas/{bhoktaId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null;
+      allow update: if request.auth != null && isAdmin();
+    }
+
+    // Temples — public directory; any authed user can read, only admin can write.
+    // Seed script signs in as admin to populate.
+    match /temples/{templeId} {
+      allow read: if request.auth != null;
+      allow create, update: if request.auth != null && isAdmin();
     }
 
     // Bookings — user can create/read their own, priest can read theirs, admin can read all
