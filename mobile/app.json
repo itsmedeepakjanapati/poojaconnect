@@ -43,6 +43,7 @@
       ]
     },
     "plugins": [
+      "expo-dev-client",
       [
         "expo-notifications",
         {
@@ -54,8 +55,9 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "YOUR_EAS_PROJECT_ID"
+        "projectId": "5b745b5e-2b16-4dca-8892-fe3e8ae9840d"
       }
-    }
+    },
+    "owner": "deepakjanapati"
   }
 }
